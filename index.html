@@ -16,6 +16,43 @@
                 return "Scissors"
             }
         }
-        
+
+       function playRound(playerSelection, computerSelection) {
+            playerSelection.toUpperCase();
+            computerSelection.toUpperCase();
+
+            var weapons = ["ROCK", "PAPER", "SCISSORS"];
+            
+            // bad inputs check
+            var isbad = 1;
+            var playerInt = null;
+            for (i = 0; i < weapons.length; i++) {
+                if (weapons[i] === playerSelection) {
+                    isbad = 0;
+                    playerInt = i;
+                }
+            }
+            if (isbad === 1) {
+                return "INPUT ERROR: playerSelection weapon is illegal";
+            }
+            isbad = 1;
+            var compInt = null;
+            for (i = 0; i < weapons.length; i++) {
+                if (weapons[i] === computerSelection) {
+                    isbad = 0;
+                    compInt = null;
+                }
+            }
+            if (isbad === 1) {
+                return "INPUT ERROR: computerSelection weapon is illegal";
+            }
+
+            // who wins?
+
+            
+
+
+           }
+
     </script>
 </html>
