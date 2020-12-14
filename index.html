@@ -44,7 +44,7 @@
             for (i = 0; i < weapons.length; i++) {
                 if (weapons[i] === computerSelection) {
                     isbad = 0;
-                    compInt = null;
+                    compInt = i;
                 }
             }
             if (isbad === 1) {
@@ -71,6 +71,10 @@
             console.log(results);
             return winner;
            }
+
+           const playerSelection = "rOcK";
+           const computerSelection = computerPlay();
+           console.log(playRound(playerSelection, computerSelection));
 
     </script>
 </html>
