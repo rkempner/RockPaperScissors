@@ -60,11 +60,11 @@
                 return winner;
             }
             else if (playerInt > compInt || (playerInt === 0 && compInt === 3)) {
-                var results = `Player wins! ${weapons[playerInt]} beats ${weapons[compInt]}\n`;
+                var results = `You win, bastard! ${weapons[playerInt]} beats ${weapons[compInt]}\n`;
                 winner = "Player";
             }
             else {
-                var results = `Computer wins! ${weapons[compInt]} beats ${weapons[playerInt]}\n`;
+                var results = `You lose, motherfucker! ${weapons[compInt]} beats ${weapons[playerInt]}\n`;
                 winner = "Computer";
             }
 
