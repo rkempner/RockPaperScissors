@@ -24,6 +24,8 @@
             var weapons = ["ROCK", "PAPER", "SCISSORS"];
             
             // bad inputs check
+            
+            // player
             var isbad = 1;
             var playerInt = null;
             for (i = 0; i < weapons.length; i++) {
@@ -33,8 +35,10 @@
                 }
             }
             if (isbad === 1) {
-                return "INPUT ERROR: playerSelection weapon is illegal";
+                console.log("INPUT ERROR: playerSelection weapon is illegal\n");
+                return 1;
             }
+            // computer
             isbad = 1;
             var compInt = null;
             for (i = 0; i < weapons.length; i++) {
@@ -44,14 +48,28 @@
                 }
             }
             if (isbad === 1) {
-                return "INPUT ERROR: computerSelection weapon is illegal";
+                console.log("INPUT ERROR: computerSelection weapon is illegal\n");
+                return 1;
             }
 
+
             // who wins?
+            var winner = "Tie";
+            if (playerInt === compInt) {
+                console.log("It's a Tie!");
+                return winner;
+            }
+            else if (playerInt > compInt || (playerInt === 0 && compInt === 3)) {
+                var results = `Player wins! ${weapons[playerInt]} beats ${weapons[compInt]}\n`;
+                winner = "Player";
+            }
+            else {
+                var results = `Computer wins! ${weapons[compInt]} beats ${weapons[playerInt]}\n`;
+                winner = "Computer";
+            }
 
-            
-
-
+            console.log(results);
+            return winner;
            }
 
     </script>
