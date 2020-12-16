@@ -51,7 +51,7 @@ function playRound(playerSelection, computerSelection) {
         console.log("INPUT ERROR: computerSelection weapon is illegal\n");
         return 1;
     }
-    console.log(`Player: ${playerInt}\nComputer: ${compInt}\n`)
+    // console.log(`Player: ${playerInt}\nComputer: ${compInt}\n`)
 
     // who wins?
     var winner = "Tie";
@@ -68,7 +68,7 @@ function playRound(playerSelection, computerSelection) {
         winner = "Computer";
     }
 
-    console.log(results);
+
     return winner;
 }
 
@@ -81,7 +81,6 @@ totalGames.textContent =  0 ;
 document.querySelectorAll('#weaponSelect').forEach(item => {
     item.addEventListener('click', () => {
         computerSelection = computerPlay();
-        console.log(computerSelection);
         playerSelection = item.textContent;
         
         var newLi = document.createElement('li');
