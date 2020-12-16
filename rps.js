@@ -1,7 +1,8 @@
 // JavaScript functions to play rock paper scissors.
 
-
-
+// Establish Global Variables
+var resultLog = [0, 0];
+var gameCount = 0;
 
 function computerPlay() {
     var random = Math.floor(Math.random() * 3);
@@ -50,20 +51,20 @@ function playRound(playerSelection, computerSelection) {
         console.log("INPUT ERROR: computerSelection weapon is illegal\n");
         return 1;
     }
-
+    console.log(`Player: ${playerInt}\nComputer: ${compInt}\n`)
 
     // who wins?
     var winner = "Tie";
     if (playerInt === compInt) {
-        console.log("It's a Tie!");
+        results = "It's a Tie!";
         return winner;
     }
-    else if (playerInt > compInt || (playerInt === 0 && compInt === 2)) {
-        var results = `You win, bastard! ${weapons[playerInt]} beats ${weapons[compInt]}\n`;
+    else if ((playerInt > compInt || (playerInt === 0 && compInt === 2))&& !(playerInt === 2 && compInt === 0)) {
+        results = ` ${weapons[playerInt]} beats ${weapons[compInt]}\n`;
         winner = "Player";
     }
     else {
-        var results = `You lose, motherfucker! ${weapons[compInt]} beats ${weapons[playerInt]}\n`;
+        results = ` ${weapons[compInt]} beats ${weapons[playerInt]}\n`;
         winner = "Computer";
     }
 
@@ -71,39 +72,45 @@ function playRound(playerSelection, computerSelection) {
     return winner;
 }
 
-function game() {
-    var resultLog = [0, 0];
-    gamesToWin = 3; // best 3 of 5
-    var gameCount = 0;
-    while (resultLog[0] < gamesToWin && resultLog[1] < gamesToWin) {
-        // weapon select
-        var playerSelection = prompt(`Rock, Paper, or Scissors?  `);
-        var computerSelection = computerPlay();
+const playerLog = document.querySelector('#log0');
+const computerLog = document.querySelector('#log1');
+const prevGame = document.querySelector('.prevGame');
+const totalGames = document.querySelector('.totalGames');
+totalGames.textContent =  0 ;
 
-        var roundResult = playRound(playerSelection, computerSelection);
+document.querySelectorAll('#weaponSelect').forEach(item => {
+    item.addEventListener('click', () => {
+        computerSelection = computerPlay();
+        console.log(computerSelection);
+        playerSelection = item.textContent;
+        
+        var newLi = document.createElement('li');
+
+        roundResult = playRound(playerSelection, computerSelection);
         if (roundResult === "Player") {
             resultLog[0]++;
+            newLi.textContent = `Player Wins! ${results}`;
+            newLi.style = "color: lightgreen";
         }
         else if (roundResult === "Computer") {
             resultLog[1]++;
+            newLi.textContent = `Computer Wins! ${results}`
+            newLi.style = "color: lightcoral";
         }
         else if (roundResult === "Tie") {
-            console.log("Be original next time, bro\n");
+            newLi.textContent = `It's A Tie`;
         }
         else {
-            console.log("Play by the rules, you cunt!\n");
+            newLi.textContent = "Something Went Wrong...";
         }
-        console.log(`Current Score: \n    Player: ${resultLog[0]}\n    Computer: ${resultLog[1]}\n\n`);
+        
         gameCount++;
-    }
+        totalGames.textContent = `${gameCount}`;
+        prevGame.appendChild(newLi);
+        playerLog.textContent = `${resultLog[0]}`;
+        computerLog.textContent = `${resultLog[1]}`;
+        
+        
 
-    var finalResult;
-    if (resultLog[0] > resultLog[1]) {
-        finalResult = `Well done! You won in ${gameCount} games! \n Final Result:  Player ${resultLog[0]};    Computer ${resultLog[1]}\n\n`;
-    }
-    else {
-        finalResult = `Sorry! You lost in ${gameCount} games! \n Final Result:  Player ${resultLog[0]};    Computer ${resultLog[1]}\n\n`;
-    }
-    return finalResult;
-}
-console.log(game());
+    })
+});

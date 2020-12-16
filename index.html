@@ -2,11 +2,31 @@
 <html>
     <head>
         <title>Rock, Paper, Scissors</title>
+        <link href="./styles.css" rel="stylesheet" type="text/css" />
     </head>
 
     <body>
+        <div>
+            <h1>Choose your weapon!</h1>
+            <button id='weaponSelect'>ROCK</button>
+            <button id='weaponSelect'>PAPER</button>
+            <button id='weaponSelect'>SCISSORS</button>
+        </div>
 
+        <div id='results'>
+            <h2>Standings after <a class='totalGames'></a> games:</h2>
+            <ul>
+                <li>Player: <a id="log0"></a></li>
+                <li>Computer: <a id="log1"></a></li>
+            </ul>
+        </div>
 
+        <div>
+            <h2>Game Log</h2>
+            <ol class='prevGame' id='reverseOL'>
+
+            </ol>
+        </div>
     </body>
 
     <script type="text/javascript" src="./rps.js"></script>

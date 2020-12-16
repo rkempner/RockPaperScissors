@@ -1,0 +1,12 @@
+html *{
+    background-color: black;
+    color: white;
+}
+
+#reverseOL {
+    display: flex;
+    flex-direction: column-reverse;
+}
+li {
+    flex: 0 0 auto;
+}
